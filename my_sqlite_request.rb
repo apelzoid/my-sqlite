@@ -182,41 +182,6 @@ end
 
 #--------------test space (uncomment and run)-------------
 
-# request = MySqliteRequest.new   
-# result = request.insert('nba_players')
-#        .values({'Player' => 'Janis Berzins Liepins'})
-#        .run   
-# puts result             
-
-# request = MySqliteRequest.new
-# result = request.from('nba_player_data')
-#        .select(['name', 'year_end'])
-#        .where('name', 'Janis Berzins Liepins')
-#        .order(:asc, 'name')
-#        .run
-# puts result 
-
-# request = MySqliteRequest.new
-# result = request.update('nba_players')
-#        .where('Player', 'Janis Ape666l2s')
-#        .set({ 'collage' => 'RSU'})
-#        .run
-# puts result
-
-# request = MySqliteRequest.new
-# request.delete.from('nba_player_data')
-#        .where('name', 'Janis Ape666l2s')
-#        .run
-
-# request = MySqliteRequest.new
-# result = request.from('nba_player_data')
-#                 .select(['name', 'birth_state', 'college', 'year_end']) 
-#                 .join('name', 'nba_players', 'Player') #column_on_db_a, filename_db_b, column_on_db_b
-#                 .run
-# puts result
-
-#Test cases
-
 # 1. FROM SELECT
 # request = MySqliteRequest.new
 # result = request.from('nba_player_data')
@@ -257,7 +222,15 @@ end
 # puts result
 
 # 6. DELETE player
-request = MySqliteRequest.new
-request.delete.from('nba_player_data')
-       .where('name', 'Alaa Renamed')
-       .run
+# request = MySqliteRequest.new
+# request.delete.from('nba_player_data')
+#        .where('name', 'Alaa Renamed')
+#        .run
+
+# 7. JOIN 
+# request = MySqliteRequest.new
+# result = request.from('nba_player_data')
+#                 .select(['name', 'birth_state', 'college', 'year_end']) 
+#                 .join('name', 'nba_players', 'Player') #column_on_db_a, filename_db_b, column_on_db_b
+#                 .run
+# puts result
