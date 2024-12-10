@@ -139,6 +139,9 @@ def load_table(table_name) #loads file and checks if it has ID row
 end
 
 def save_table(table_name, data)
+  puts "Debug: Saving table #{table_name} with the following data:"
+  data.each { |row| puts row.inspect }
+
   CSV.open("#{table_name}.csv", 'w') do |csv|
     headers = data.first.keys
     headers.unshift(headers.delete('ID')) if headers.include?('ID') # Moves 'ID' to the front if it exists
@@ -149,6 +152,7 @@ def save_table(table_name, data)
     end
   end
 end
+
 
 def apply_where(data)
   return data unless @where_column
@@ -187,7 +191,7 @@ end
 # request = MySqliteRequest.new
 # result = request.from('nba_player_data')
 #        .select(['name', 'year_end'])
-#        .where('name', 'Janis Berzins')
+#        .where('name', 'Janis Berzins Liepins')
 #        .order(:asc, 'name')
 #        .run
 # puts result 
@@ -195,13 +199,13 @@ end
 # request = MySqliteRequest.new
 # result = request.update('nba_players')
 #        .where('Player', 'Janis Ape666l2s')
-#        .set({ 'collage' => 'Latvijas Universitate'})
+#        .set({ 'collage' => 'RSU'})
 #        .run
 # puts result
 
 # request = MySqliteRequest.new
 # request.delete.from('nba_player_data')
-#        .where('name', 'Janis Berzins')
+#        .where('name', 'Janis Ape666l2s')
 #        .run
 
 # request = MySqliteRequest.new
@@ -210,3 +214,50 @@ end
 #                 .join('name', 'nba_players', 'Player') #column_on_db_a, filename_db_b, column_on_db_b
 #                 .run
 # puts result
+
+#Test cases
+
+# 1. FROM SELECT
+# request = MySqliteRequest.new
+# result = request.from('nba_player_data')
+#        .select(['name'])
+#        .run
+# puts result
+
+# 2. FROM SELECT WHERE
+# request = MySqliteRequest.new
+# result = request.from('nba_player_data')
+#        .select(['name'])
+#        .where('college', 'University of California')
+#        .run
+# puts result
+
+# 3. FROM SELECT multiple WHERE
+# request = MySqliteRequest.new
+# result = request.from('nba_player_data')
+#        .select(['name'])
+#        .where('college', 'University of California')
+#        .where('year_start', '1996')
+#        .run
+# puts result
+
+# 4. INSERT player
+# request = MySqliteRequest.new
+# result = request.insert('nba_player_data')
+#        .values({'name' => 'Alaa Abdelnaby', 'year_start' => '1991', 'year_end' => '1995', 'position' => 'F-C', 'height' => '6-10', 'weight' => '240', 'birth_date' => "June 24, 1968", 'college' => 'Duke University'})
+#        .run
+# puts result
+
+# 5. UPDATE player
+# request = MySqliteRequest.new
+# result = request.update('nba_player_data')
+#        .where('name', 'Alaa Abdelnaby')
+#        .set({'name' => 'Alaa Renamed'})
+#        .run
+# puts result
+
+# 6. DELETE player
+request = MySqliteRequest.new
+request.delete.from('nba_player_data')
+       .where('name', 'Alaa Renamed')
+       .run
