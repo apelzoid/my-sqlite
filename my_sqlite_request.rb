@@ -1,5 +1,4 @@
 require "csv"
-require "readline" # not yet used but is needed as per task description
 
 class MySqliteRequest
   def initialize(table_name = nil)
@@ -159,7 +158,7 @@ def apply_where(data)
   data.select { |row| row[@where_column] == @where_value }
 end
 
-def apply_join(data)
+def apply_join(data) #joins column_on_db_a with filename_db_b based on column_on_db_b
   join_data = load_table(@join_table)
   data.map do |row|
     match = join_data.find { |join_row| join_row[@join_column_b] == row[@join_column_a] }
@@ -200,7 +199,7 @@ end
 # 3. FROM SELECT multiple WHERE
 # request = MySqliteRequest.new
 # result = request.from('nba_player_data')
-#        .select(['name'])
+#        .select(['name', 'year_start'])
 #        .where('college', 'University of California')
 #        .where('year_start', '1996')
 #        .run

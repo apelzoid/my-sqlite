@@ -15,12 +15,15 @@ UPDATE: Modify existing rows in CSV files.
 DELETE: Remove rows from CSV files.
 JOIN: Combine data from two CSV files based on a matching column.
 
+Git commit history:
+Please refer to https://github.com/apelzoid/my-sqlite/commits/master as Gitea was not used for this project.
+
 ## Installation
 1. Clone the repository:
 git clone <https://github.com/apelzoid/my-sqlite>
 cd my_sqlite
 
-2. Ensure Ruby is installed on your machine:
+2. Ensure Ruby is installed on your machine, it also needs also the gem Readline:
 ruby -v
 
 3. Place your CSV files (e.g., nba_players.csv, nba_player_data.csv) in the same directory as the script.
@@ -38,7 +41,7 @@ Try commands:
 SELECT * FROM nba_player_data
 SELECT name,year_start FROM nba_player_data WHERE year_start=2006
 SELECT name,birth_date,college FROM nba_player_data WHERE name='Matt Zunic'
-SELECT Player, birth_state, birth_city FROM nba_players JOIN nba_player_data ON nba_players.Player=nba_player_data.name WHERE Player='Pascal Siakam'
+SELECT Player, birth_state,position, birth_city FROM nba_players JOIN nba_player_data ON nba_players.Player=nba_player_data.name WHERE Player='Pascal Siakam'
 2) INSERT Commands
 INSERT INTO nba_player_data VALUES (4552,"Hugo Boss",1990,2000,"G","6-8",89,"March 8, 1979","RSU")
 INSERT INTO nba_players VALUES (3925,3925,Trevor Levor,199,90,Wesrtern Uni,1999,San Antonio,Texas)

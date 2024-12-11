@@ -208,7 +208,7 @@ MySqliteQueryCli.new.run!
 #SELECT * FROM nba_player_data
 #SELECT name,birth_date,college FROM nba_player_data WHERE name='Hugy Boss'
 #SELECT name,height,birth_city FROM nba_player_data WHERE =201
-#SELECT Player, birth_state, birth_city FROM nba_players JOIN nba_player_data ON nba_players.Player=nba_player_data.name WHERE Player='Pascal Siakam'
+#SELECT Player, birth_state,position, birth_city FROM nba_players JOIN nba_player_data ON nba_players.Player=nba_player_data.name WHERE Player='Pascal Siakam'
 #INSERT INTO nba_player_data VALUES (4553,"Hugo Boss",1990,2000,"G","6-8",89,"March 8, 1979","RSU")
 #INSERT INTO nba_players VALUES (3925,3925,Trevor Levor,199,90,Wesrtern Uni,1999,San Antonio,Texas)
 #UPDATE nba_players SET height=1501,weight=109 WHERE ID=1
